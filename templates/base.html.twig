@@ -2,7 +2,8 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>{% block title %}TodoApp{% endblock %}</title>
         {% block stylesheets %}   
             {# Boostrap 4 Latest compiled and minified CSS #}
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
@@ -10,12 +11,37 @@
             <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
             
             {# Boostrap 4 Personal CSS style file #}
-            <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+            {# <link href="{{ asset('css/style.css') }}" rel="stylesheet" /> #}
         {% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <div class="container">
+            <div class="row">
+                <h1>TodoApp</h1>
+            </div>
+            
+            <div class="row">
+                <nav>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('home') }}">&Agrave; propos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ path('task_list') }}">Todos</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+
+            {% block body %}
+            
+            {% endblock %}
+        </div>
+
         {% block javascripts %}
+            {# jQuery (necessary for Bootstrap's JavaScript plugins) #}
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+            
             {# Boostrap 4 Latest compiled and minified JavaScript #}
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
         {% endblock %}

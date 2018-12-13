@@ -1,0 +1,8 @@
+<h3>Nouvelle tâche :</h3>
+
+<form action="{{ path('add_task') }}" method="POST" class="form-inline py-2">
+    <div class="form-group mx-sm-3 mb-2">
+        <input type="text" class="form-control" id="inputNewTaskName" name="inputNewTaskName" placeholder="Intitulé de la tâche">
+    </div>
+    <button type="submit" class="btn btn-primary mb-2">Ajouter</button>
+</form>

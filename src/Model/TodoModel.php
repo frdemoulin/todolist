@@ -1,6 +1,6 @@
 <?php
 
-namespace AppBundle\Model;
+namespace App\Model;
 
 class TodoModel
 {
@@ -93,5 +93,13 @@ class TodoModel
             unset($todos[$index]);
 
         self::setTodos($todos);
+    }
+
+    // fonction pour remettre à zéro la session
+    public static function reset()
+    {
+        if (isset($_SESSION)) {
+            session_unset();
+        }
     }
 }

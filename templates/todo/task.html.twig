@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{{ parent() }}
+
+<h2>Détail de la tâche</h2>
+
+<p>TODO : rendre dynamique l'affichage du détail des tâches</p>
+
+<ul class="list-unstyled">
+    <li><strong>Intitulé :</strong> {{ session['todos'][id]['task'] }}</li>
+    <li><strong>Statut :</strong> {{ session['todos'][id]['status'] }}</li>
+    <li><strong>Créée le :</strong> {{ session['todos'][id]['created_at'] }}</li>
+</ul>
+
+<a href="{{ path('task_list') }}">Retour à la liste des tâches</a>
+
+{% endblock %}

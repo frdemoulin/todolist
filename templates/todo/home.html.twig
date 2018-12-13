@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+{{ parent() }}
+
+<h2>&Agrave; propos</h2>
+
+<p>Bienvenue sur TodoApp, votre nouveau gestionnaire de tâches !</p>
+
+<p>Vous pouvez <a href="{{ path('task_list') }}">afficher la liste des tâches</a> ou ajouter tout de suite une nouvelle tâche :</p>
+
+{{ include('todo/new_task_form.html.twig') }}
+
+{% endblock %}
