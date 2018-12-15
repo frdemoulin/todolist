@@ -18,18 +18,6 @@
 {% endfor %}
 {# {% endif %} #}
 
-{# {% for index,infos_task in session['todos'] %}
-    <div class="form-check font-weight-normal">
-        <form class="form-inline" action="{{ path('delete_task') }}" method="POST">
-            <input class="form-check-input" type="checkbox" value="{{ index }}" name="taskIdToDelete" id="checkDeleteTask{{ index }}">
-            <label class="form-check-label" for="checkDeleteTask{{ index }}">
-                {{ infos_task.task }}
-            </label>
-            <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
-        </form>
-    </div>
-{% endfor %} #}
-
 <div class="row justify-content-md-center">
     <table class="table table-sm table-hover table-bordered">
         <thead class="thead-dark">
@@ -40,18 +28,18 @@
             </tr>
         </thead>
         <tbody>
-            {% for index,infos_task in session['todos'] %}
+            {% for taskIndex,infos_task in session['todos'] %}
             <tr>
                 <td>
                     {{ loop.index }}
                 </td>
                 <td>
-                    <a href="{{ path('show_task', {'id': index}) }}">{{ infos_task.task }}</a>
+                    <a href="{{ path('show_task', {'id': taskIndex}) }}">{{ infos_task.task }}</a>
                 </td>
-                <td id="task-id-{{ index }}">
-                    <button type="submit" class="btn btn-success btn-sm">Faite !</button>
+                <td data-id="{{ taskIndex }}">
+                    <button type="button" class="btn btn-success btn-sm">Faite !</button>
                     
-                    <button type="submit" class="btn btn-danger btn-sm" value="{{ index }}" name"taskIdToDelete">Supprimer</button>
+                    <button type="button" class="btn btn-danger btn-sm">Supprimer</button>
                 </td>
             </tr>
             {% endfor %}
@@ -72,13 +60,20 @@
 </div>
 
 <div class="row">
-    <p><a href="{{ path('reset_task') }}">Réinitialliser les tâches (dev)</a></p>
+    <p><a class="text text-danger" href="{{ path('reset_task') }}">Réinitialliser les tâches (dev)</a></p>
 </div>
 
 {% endblock %}
 
 {% block javascripts %}
     {{ parent() }}
+
     {# feuille js gérant les actions liées aux boutons done / delete #}
-    <script type="text/javascript" src="{{ asset('js/app.js') }}"></script>
+    {# <script src="{{ asset('js/appTodo.js') }}"></script> #}
+    <script>
+        var ajaxUrl = "{{ path('delete_task')|e('js') }}";
+    </script>
+
+    <script src="{{ asset('js/appTodo.js') }}"></script>
+
 {% endblock %}
